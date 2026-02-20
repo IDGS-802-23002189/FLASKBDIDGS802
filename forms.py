@@ -1,20 +1,11 @@
-from wtforms import Form, RadioField
-from wtforms import StringField, IntegerField, PasswordField
-from wtforms import EmailField
-from wtforms import validators
+from flask_wtf import FlaskForm
+from wtforms import StringField, IntegerField, EmailField
+from wtforms.validators import DataRequired, Length, Email
+from wtforms import HiddenField
 
 
-class UserForm(Form): #HEREDA DE LA CLASE FORM
-    id = IntegerField('ID',[
-        validators.DataRequired(message="El campo es requerido")
-        ])
-    nombre = StringField('Nombre Alumno', [
-        validators.DataRequired(message="El campo es requerido"),
-        validators.length(min=3, max=10, message="Ingrese un nombre valido")
-    ])
-    aPaterno = StringField('Apaterno',[
-        validators.DataRequired(message="El campo es requerido"),
-    ])
-    email = EmailField('Email', [
-        validators.Email(message="Ingrese un correo valido"),
-    ])
+class UserForm(FlaskForm):
+    id = HiddenField()
+    nombre = StringField('Nombre', validators=[DataRequired()])
+    apaterno = StringField('Apaterno', validators=[DataRequired()])
+    email = EmailField('Email', validators=[DataRequired(), Email()])

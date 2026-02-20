@@ -4,29 +4,32 @@
 
 {% import "_macros.html" as macros %}
 
+<form method="POST" action="" novalidate class="max-w-sm mx-auto">
 
-<form class="max-w-sm mx-auto space-y-4">
+    {{ form.csrf_token }}
+
     <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">ID</label>
-        <input type="text" id="id" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs placeholder:text-body" placeholder="" required />
+        
+        {{ macros.camposNuevos(form.nombre, clase="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs") }}
     </div>
+
     <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Nombre</label>
-        <input type="text" id="nombre" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
+        
+        {{ macros.camposNuevos(form.apaterno, clase="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs") }}
     </div>
+
     <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Apaterno</label>
-        <input type="text" id="apaterno" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3.5 py-3 shadow-xs placeholder:text-body" placeholder="" required />
+        
+        {{ macros.camposNuevos(form.email, clase="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs") }}
     </div>
-    <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Amaterno</label>
-        <input type="text" id="amaterno" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-4 py-3.5 shadow-xs placeholder:text-body" placeholder="" required />
+
+    <div class="mt-4">
+        <button type="submit"
+            class="bg-brand text-white px-4 py-2 rounded-base shadow-xs">
+            Guardar
+        </button>
     </div>
-    <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">email</label>
-        <input type="email" id="email" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-4 py-3.5 shadow-xs placeholder:text-body" placeholder="" required />
-    </div>
+
 </form>
 
-
-{%endblock%}
+{% endblock %}

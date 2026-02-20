@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<form class="max-w-sm mx-auto mt-5" method="post" novalidate>
+    
+    {{ form.csrf_token }}
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    {{ form.id(type="hidden") }}
+
+  <div class="mb-5">
+    {{ form.nombre.label(class="block mb-2.5 text-sm font-medium text-heading") }}
+    {{ form.nombre(class="block w-full border rounded px-3 py-2") }}
+  </div>
+
+  <div class="mb-5">
+    {{ form.apaterno.label(class="block mb-2.5 text-sm font-medium text-heading") }}
+    {{ form.apaterno(class="block w-full border rounded px-3 py-2") }}
+  </div>
+
+  <div class="mb-5">
+    {{ form.email.label(class="block mb-2.5 text-sm font-medium text-heading") }}
+    {{ form.email(class="block w-full border rounded px-3 py-2") }}
+  </div>
+
+  <button type="submit" 
+    class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+    Modificar
+  </button>
+  <a href="{{ url_for('index') }}"
+  class="ml-3 text-white bg-gray-500 box-border border border-transparent hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none inline-block">
+  Salir
+</a>
+
+</form>
+ 
+{% endblock %}

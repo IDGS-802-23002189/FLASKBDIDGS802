@@ -6,6 +6,6 @@ class Config(object):
     SESSION_COOKIE_SECURE=False
 
 class DevelopmentConfig(Config):
-    DEBUG=True
-    SQLALCHEMY_DATABASE_URT='mysqlitpymysq1://root/:burbu@localhost/bdidgs802'
-    SQLALCHEMY_TRACK_MODIFICATIONS=False
+    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:burbu@localhost/bdidgs802'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
