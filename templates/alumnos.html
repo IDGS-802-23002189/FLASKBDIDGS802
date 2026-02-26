@@ -1,35 +1,27 @@
 {% extends "layout.html" %}
-
 {% block container %}
-
 {% import "_macros.html" as macros %}
 
-<form method="POST" action="" novalidate class="max-w-sm mx-auto">
-
-    {{ form.csrf_token }}
-
-    <div>
-        
-        {{ macros.camposNuevos(form.nombre, clase="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs") }}
+<form class="max-w-sm mx-auto mt-5" method="post" unvalidated>
+    {{form.csrf_token}}
+    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+    <div class="mb-5">
+        {{macros.campoNuevo(form.nombre, class="block mb-2.5 text-sm font-medium text-heading")}}
     </div>
-
-    <div>
-        
-        {{ macros.camposNuevos(form.apaterno, clase="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs") }}
+    <div class="mb-5">
+        {{macros.campoNuevo(form.apellido, class="block mb-2.5 text-sm font-medium text-heading")}}
     </div>
-
-    <div>
-        
-        {{ macros.camposNuevos(form.email, clase="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs") }}
+    <div class="mb-5">
+        {{macros.campoNuevo(form.email, class="block mb-2.5 text-sm font-medium text-heading")}}
     </div>
-
-    <div class="mt-4">
-        <button type="submit"
-            class="bg-brand text-white px-4 py-2 rounded-base shadow-xs">
-            Guardar
-        </button>
-    </div>
-
+    <button type="submit" class="text-green-900 bg-green-200 hover:bg-green-300 
+           focus:ring-4 focus:ring-green-100
+           shadow-sm font-medium leading-5 
+           rounded-lg text-sm px-4 py-2.5 
+           transition-all duration-200 ease-in-out
+           focus:outline-none">
+        Agregar
+    </button>
 </form>
 
 {% endblock %}

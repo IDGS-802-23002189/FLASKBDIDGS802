@@ -7,5 +7,5 @@ from wtforms import HiddenField
 class UserForm(FlaskForm):
     id = HiddenField()
     nombre = StringField('Nombre', validators=[DataRequired()])
-    apaterno = StringField('Apaterno', validators=[DataRequired()])
+    apellidos = StringField('Apellidos', validators=[DataRequired()])
     email = EmailField('Email', validators=[DataRequired(), Email()])

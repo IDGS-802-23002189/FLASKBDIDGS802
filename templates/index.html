@@ -9,7 +9,10 @@
     <div class="w-full max-w-7xl mx-auto">
         
         <div class="flex items-center justify-between mb-6 px-2">
-            <h1 class="text-2xl font-bold text-gray-800">Nuevo</h1>
+            <a href="{{ url_for('alumnos') }}"
+            class="bg-purple-200 hover:bg-purple-300 text-purple-800 focus:ring-4 focus:ring-purple-200 font-semibold rounded-xl text-sm px-6 py-2 shadow-md transition">
+            + Nuevo Alumno
+        </a>
             
             
         </div>
@@ -22,6 +25,7 @@
                             <th scope="col" class="px-8 py-4 font-bold">Nombre</th>
                             <th scope="col" class="px-8 py-4 font-bold">Apellido</th>
                             <th scope="col" class="px-8 py-4 font-bold">Email</th>
+                            <th scope="col" class="px-8 py-4 font-bold">Tel</th>
                             <th scope="col" class="px-8 py-4 font-bold text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -29,8 +33,9 @@
                         {% for alum in alumno %}
                         <tr class="bg-white hover:bg-gray-50 transition-colors">
                             <td class="px-8 py-4 font-medium text-gray-900">{{alum.nombre}}</td>
-                            <td class="px-8 py-4">{{alum.apaterno}}</td>
+                            <td class="px-8 py-4">{{alum.apellidos}}</td>
                             <td class="px-8 py-4">{{alum.email}}</td>
+                             <td class="px-8 py-4">{{alum.telefono}}</td>
                             <td class="px-8 py-4 flex justify-center space-x-2">
 
     <a href="{{ url_for('modificar', id=alum.id) }}"
@@ -43,7 +48,7 @@
         Detalles
     </a>
     <a href="{{ url_for('eliminar', id=alum.id) }}"
-   class="text-body bg-neutral-danger-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-full text-xs px-4 py-2 focus:outline-none">
+   class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
     Eliminar
 </a>
 
