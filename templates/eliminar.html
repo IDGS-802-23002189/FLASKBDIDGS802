@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<form class="max-w-sm mx-auto mt-5 bg-white p-6 rounded-xl shadow"
+      method="post" novalidate>
+
+    {{ form.csrf_token }}
+
+    {{ form.id(type="hidden") }}
+
+    <h2 class="text-xl font-bold mb-6 text-center text-red-600">
+        Confirmar eliminación
+    </h2>
+
+    <div class="mb-5">
+        {{ form.nombre.label(class="block mb-2 text-sm font-medium") }}
+        {{ form.nombre(class="block w-full border rounded px-3 py-2 bg-gray-100", disabled=True) }}
+    </div>
+
+    <div class="mb-5">
+        {{ form.apaterno.label(class="block mb-2 text-sm font-medium") }}
+        {{ form.apaterno(class="block w-full border rounded px-3 py-2 bg-gray-100", disabled=True) }}
+    </div>
+
+    <div class="mb-5">
+        {{ form.email.label(class="block mb-2 text-sm font-medium") }}
+        {{ form.email(class="block w-full border rounded px-3 py-2 bg-gray-100", disabled=True) }}
+    </div>
+
+    <div class="flex gap-3 mt-6 justify-center">
+
+        <button type="submit"
+            class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 shadow font-medium rounded text-sm px-4 py-2">
+            Eliminar
+        </button>
+
+        <a href="{{ url_for('index') }}"
+           class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 shadow font-medium rounded text-sm px-4 py-2 inline-block">
+            Salir
+        </a>
+
+    </div>
+
+</form>
+
+{% endblock %}
