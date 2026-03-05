@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block container %}
+{% import "_macros.html" as macros %}
+
+<form class="max-w-sm mx-auto mt-5" method="post" novalidate>
+    {{ form.csrf_token }}
+
+    <div class="mb-5">
+        {{ macros.camposNuevos(form.nombre, clase="block mb-2.5 text-sm font-medium text-heading") }}
+    </div>
+
+    <div class="mb-5">
+        {{ macros.camposNuevos(form.apellidos, clase="block mb-2.5 text-sm font-medium text-heading") }}
+    </div>
+
+    <div class="mb-5">
+        {{ macros.camposNuevos(form.email, clase="block mb-2.5 text-sm font-medium text-heading") }}
+    </div>
+    <div class="mb-5">
+        {{ macros.camposNuevos(form.telefono, clase="block mb-2.5 text-sm font-medium text-heading") }}
+    </div>
+
+    <button type="submit"
+         class="text-white bg-success box-border border border-transparent 
+               hover:bg-success-strong focus:ring-4 focus:ring-success-medium 
+               shadow-xs font-medium leading-5 rounded-full text-sm 
+               px-4 py-2.5 focus:outline-none">
+        Agregar
+    </button>
+
+</form>
+
+{% endblock %}

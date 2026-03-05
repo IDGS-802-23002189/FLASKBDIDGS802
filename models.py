@@ -1,14 +1,26 @@
-from flask_sqlalchemy import SQLAlchemy
-import datetime
 
+import datetime
+from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 class Alumnos(db.Model):
     __tablename__ = 'alumnos'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nombre = db.Column(db.String(50))
     apellidos = db.Column(db.String(200))
     email = db.Column(db.String(100))
     telefono= db.Column(db.String(100))
     created_date = db.Column(db.DateTime, default=datetime.datetime.now)
+
+
+
+
+class Maestros(db.Model):
+    __tablename__ = 'maestros'
+
+    matricula = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nombre = db.Column(db.String(50))
+    apellidos = db.Column(db.String(200))
+    especialidad = db.Column(db.String(200))
+    email = db.Column(db.String(100))

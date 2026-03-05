@@ -6,9 +6,9 @@
     <!-- Encabezado -->
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-gray-800">
-            Lista de Alumnos
+            Lista de Maestros
         </h2>
-        <a href="{{ url_for('alumnos') }}">
+        <a href="{{ url_for('maestros_bp.agregar_maestro') }}">
             <button type="button" class="text-white bg-success box-border border border-transparent 
                hover:bg-success-strong focus:ring-4 focus:ring-success-medium 
                shadow-xs font-medium leading-5 rounded-full text-sm 
@@ -24,39 +24,44 @@
 
             <thead class="bg-gray-100 text-xs uppercase text-gray-600">
                 <tr>
+                    <th class="px-6 py-3">Matrícula</th>
                     <th class="px-6 py-3">Nombre</th>
                     <th class="px-6 py-3">Apellidos</th>
+                    <th class="px-6 py-3">Especialidad</th>
                     <th class="px-6 py-3">Email</th>
-                    <th class="px-6 py-3">Teléfono</th>
                     <th class="px-6 py-3 text-center">Acciones</th>
                 </tr>
             </thead>
 
             <tbody class="divide-y divide-gray-200">
 
-                {% if alumno %}
-                {% for alum in alumno %}
+                {% if maestros %}
+                {% for maestro in maestros %}
                 <tr class="hover:bg-gray-50 transition">
 
                     <td class="px-6 py-4 font-medium">
-                        {{ alum.nombre }}
+                        {{ maestro.matricula }}
                     </td>
 
                     <td class="px-6 py-4">
-                        {{ alum.apellidos }}
+                        {{ maestro.nombre }}
                     </td>
 
                     <td class="px-6 py-4">
-                        {{ alum.email }}
+                        {{ maestro.apellidos }}
                     </td>
 
                     <td class="px-6 py-4">
-                        {{ alum.telefono }}
+                        {{ maestro.especialidad }}
+                    </td>
+
+                    <td class="px-6 py-4">
+                        {{ maestro.email }}
                     </td>
 
                     <td class="px-6 py-4 text-center space-x-2">
 
-                        <a href="{{ url_for('detalles', id=alum.id) }}">
+                        <a href="{{ url_for('maestros_bp.ver_maestro', id=maestro.matricula) }}">
                             <button type="button" class="text-white bg-brand box-border border border-transparent 
                    hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium 
                    shadow-xs font-medium leading-5 rounded-full text-sm 
@@ -65,7 +70,7 @@
                             </button>
                         </a>
 
-                        <a href="{{ url_for('modificar', id=alum.id) }}">
+                        <a href="{{ url_for('maestros_bp.modificar_maestro', id=maestro.matricula) }}">
                             <button type="button" class="text-white bg-warning box-border border border-transparent 
                    hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium 
                    shadow-xs font-medium leading-5 rounded-full text-sm 
@@ -74,7 +79,7 @@
                             </button>
                         </a>
 
-                        <a href="{{ url_for('eliminar', id=alum.id) }}">
+                        <a href="{{ url_for('maestros_bp.eliminar_maestro', id=maestro.matricula) }}">
                             <button type="button" class="text-white bg-danger box-border border border-transparent 
                    hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium 
                    shadow-xs font-medium leading-5 rounded-full text-sm 
@@ -88,8 +93,8 @@
                 {% endfor %}
                 {% else %}
                 <tr>
-                    <td colspan="5" class="px-6 py-6 text-center text-gray-500">
-                        No hay alumnos registrados.
+                    <td colspan="6" class="px-6 py-6 text-center text-gray-500">
+                        No hay maestros registrados.
                     </td>
                 </tr>
                 {% endif %}
