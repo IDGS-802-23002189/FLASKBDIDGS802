@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="max-w-md mx-auto mt-10 bg-white p-6 rounded-xl shadow">
+
+    <h2 class="text-xl font-bold mb-4">
+        Detalle de inscripción
+    </h2>
+
+    <p>
+        <strong>Alumno:</strong>
+        {{ alumno.nombre }} {{ alumno.apellidos }}
+    </p>
+
+    <p>
+        <strong>Curso:</strong>
+        {{ curso.nombre }}
+    </p>
+
+    <p>
+        <strong>Maestro:</strong>
+        {{ curso.maestro.nombre }} {{ curso.maestro.apellidos }}
+    </p>
+
+    <div class="mt-6 text-center">
+
+        <a href="{{ url_for('inscripcion_bp.lista_inscripciones') }}"
+            class="text-white bg-brand box-border border border-transparent 
+                   hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium 
+                   shadow-xs font-medium leading-5 rounded-full text-sm 
+                   px-4 py-2.5 focus:outline-none">
+                    Volver
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

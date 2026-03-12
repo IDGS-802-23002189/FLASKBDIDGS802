@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center py-24 px-10">
+
+    <div class="w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-red-600 to-red-500 px-16 py-12">
+            <h2 class="text-4xl font-bold text-white">
+                Eliminar inscripción
+            </h2>
+            <p class="text-red-100 mt-2">
+                Confirma que deseas eliminar el siguiente registro
+            </p>
+        </div>
+
+        <!-- Form -->
+        <form method="post" novalidate>
+            {{ form.csrf_token }}
+
+            <div class="px-20 py-20 space-y-16">
+
+                <div class="bg-gray-50 rounded-3xl p-16 shadow-inner">
+
+                    <!-- Grid de 2 columnas -->
+                    <!-- Alumno -->
+                    <div
+                        class="w-full h-16 px-8 border border-gray-200 rounded-2xl flex items-center bg-white text-gray-800 text-lg">
+                        {{ alumno.nombre }}
+                    </div>
+
+                    <!-- Apellidos -->
+                    <div
+                        class="w-full h-16 px-8 border border-gray-200 rounded-2xl flex items-center bg-white text-gray-800 text-lg">
+                        {{ alumno.apellidos }}
+                    </div>
+
+                    <!-- Curso -->
+                    <div
+                        class="w-full h-16 px-8 border border-gray-200 rounded-2xl flex items-center bg-white text-gray-800 text-lg">
+                        {{ curso.nombre }}
+                    </div>
+
+                    <!-- Maestro -->
+                    <div
+                        class="w-full h-16 px-8 border border-gray-200 rounded-2xl flex items-center bg-white text-gray-800 text-lg">
+                        {{ curso.maestro.nombre }} {{ curso.maestro.apellidos }}
+                    </div>
+                </div>
+
+                <!-- Botones -->
+                <div class="flex justify-end gap-6 pt-12">
+
+                    <a href="{{ url_for('inscripcion_bp.lista_inscripciones') }}"
+                       class="text-white bg-brand box-border border border-transparent 
+                   hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium 
+                   shadow-xs font-medium leading-5 rounded-full text-sm 
+                   px-4 py-2.5 focus:outline-none">
+                        Cancelar
+                    </a>
+
+                    <button type="submit" class="text-white bg-danger box-border border border-transparent 
+                   hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium 
+                   shadow-xs font-medium leading-5 rounded-full text-sm 
+                   px-4 py-2.5 focus:outline-none">
+                        Eliminar
+                    </button>
+
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

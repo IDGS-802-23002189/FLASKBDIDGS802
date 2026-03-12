@@ -6,98 +6,11 @@
     <!-- Encabezado -->
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-gray-800">
-            Lista de Alumnos
+            BIENVENIDO
         </h2>
-        <a href="{{ url_for('alumnos') }}">
-            <button type="button" class="text-white bg-success box-border border border-transparent 
-               hover:bg-success-strong focus:ring-4 focus:ring-success-medium 
-               shadow-xs font-medium leading-5 rounded-full text-sm 
-               px-4 py-2.5 focus:outline-none">
-                Agregar
-            </button>
-        </a>
+        
     </div>
 
-    <!-- Tabla -->
-    <div class="overflow-x-auto bg-white rounded-lg shadow border border-gray-200">
-        <table class="min-w-full text-sm text-left text-gray-700">
-
-            <thead class="bg-gray-100 text-xs uppercase text-gray-600">
-                <tr>
-                    <th class="px-6 py-3">Nombre</th>
-                    <th class="px-6 py-3">Apellidos</th>
-                    <th class="px-6 py-3">Email</th>
-                    <th class="px-6 py-3">Teléfono</th>
-                    <th class="px-6 py-3 text-center">Acciones</th>
-                </tr>
-            </thead>
-
-            <tbody class="divide-y divide-gray-200">
-
-                {% if alumno %}
-                {% for alum in alumno %}
-                <tr class="hover:bg-gray-50 transition">
-
-                    <td class="px-6 py-4 font-medium">
-                        {{ alum.nombre }}
-                    </td>
-
-                    <td class="px-6 py-4">
-                        {{ alum.apellidos }}
-                    </td>
-
-                    <td class="px-6 py-4">
-                        {{ alum.email }}
-                    </td>
-
-                    <td class="px-6 py-4">
-                        {{ alum.telefono }}
-                    </td>
-
-                    <td class="px-6 py-4 text-center space-x-2">
-
-                        <a href="{{ url_for('detalles', id=alum.id) }}">
-                            <button type="button" class="text-white bg-brand box-border border border-transparent 
-                   hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium 
-                   shadow-xs font-medium leading-5 rounded-full text-sm 
-                   px-4 py-2.5 focus:outline-none">
-                                Ver
-                            </button>
-                        </a>
-
-                        <a href="{{ url_for('modificar', id=alum.id) }}">
-                            <button type="button" class="text-white bg-warning box-border border border-transparent 
-                   hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium 
-                   shadow-xs font-medium leading-5 rounded-full text-sm 
-                   px-4 py-2.5 focus:outline-none">
-                                Modificar
-                            </button>
-                        </a>
-
-                        <a href="{{ url_for('eliminar', id=alum.id) }}">
-                            <button type="button" class="text-white bg-danger box-border border border-transparent 
-                   hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium 
-                   shadow-xs font-medium leading-5 rounded-full text-sm 
-                   px-4 py-2.5 focus:outline-none">
-                                Eliminar
-                            </button>
-                        </a>
-
-                    </td>
-                </tr>
-                {% endfor %}
-                {% else %}
-                <tr>
-                    <td colspan="5" class="px-6 py-6 text-center text-gray-500">
-                        No hay alumnos registrados.
-                    </td>
-                </tr>
-                {% endif %}
-
-            </tbody>
-
-        </table>
-    </div>
 
 </div>
 

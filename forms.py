@@ -2,6 +2,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, EmailField
 from wtforms.validators import DataRequired, Length, Email
 from wtforms import HiddenField
+from wtforms import StringField, SelectField
+
 
 
 class UserForm(FlaskForm):
@@ -45,4 +47,26 @@ class MaestroForm(FlaskForm):
             DataRequired(),
             Email()
         ]
+    )
+
+
+
+class CursoForm(FlaskForm):
+    nombre = StringField("Nombre del Curso", validators=[DataRequired()])
+    descripcion = StringField("Descripción", validators=[DataRequired()])
+    maestro_id = SelectField("Maestro", coerce=int, validators=[DataRequired()])
+
+
+
+class InscripcionForm(FlaskForm):
+    id = HiddenField()  
+    alumno_id = SelectField(
+        "Alumno",
+        coerce=int,  
+        validators=[DataRequired()]
+    )
+    curso_id = SelectField(
+        "Curso",
+        coerce=int,
+        validators=[DataRequired()]
     )

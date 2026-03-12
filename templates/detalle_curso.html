@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="max-w-5xl mx-auto mt-10 px-6">
+
+    <div class="bg-white shadow-2xl rounded-3xl overflow-hidden">
+
+        <div class="bg-gradient-to-r from-indigo-600 to-indigo-500 px-8 py-10 text-white">
+            <h2 class="text-3xl font-bold">
+                {{ curso.nombre }}
+            </h2>
+
+            <p class="mt-2 text-indigo-100">
+                Maestro: {{ curso.maestro.nombre }} {{ curso.maestro.apellidos }}
+            </p>
+        </div>
+        <div class="p-8">
+            <div class="flex justify-end mb-8">
+                <a href="{{ url_for('cursos_bp.inscribir_alumno', curso_id=curso.id) }}"
+                   class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full shadow-md transition">
+                    + Inscribir alumno
+                </a>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-6 shadow-inner">
+
+                <h3 class="text-lg font-semibold mb-4 text-gray-700">
+                    Alumnos inscritos
+                </h3>
+
+                {% if curso.alumnos %}
+                    <div class="grid md:grid-cols-2 gap-4">
+                        {% for alumno in curso.alumnos %}
+                            <div class="bg-white p-4 rounded-xl shadow hover:shadow-md transition">
+                                <p class="font-medium text-gray-800">
+                                    {{ alumno.nombre }} {{ alumno.apellidos }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-gray-500 italic">
+                        No hay alumnos inscritos en este curso.
+                    </p>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

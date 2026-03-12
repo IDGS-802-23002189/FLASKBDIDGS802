@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<form class="max-w-md mx-auto mt-6 bg-white p-6 rounded-xl shadow" method="post">
+
+    <!-- CSRF token -->
+    {{ form.csrf_token }}
+
+    <h2 class="text-xl font-bold mb-6 text-center">
+        Editar inscripción
+    </h2>
+
+    <div class="mb-4">
+        <label class="block mb-2">Alumno</label>
+        <select name="alumno_id" class="w-full border rounded px-3 py-2">
+            {% for alumno in alumnos %}
+            <option value="{{ alumno.id }}" {% if alumno.id==inscripcion.alumno_id %}selected{% endif %}>
+                {{ alumno.nombre }} {{ alumno.apellidos }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-4">
+        <label class="block mb-2">Curso</label>
+        <select name="curso_id" class="w-full border rounded px-3 py-2">
+            {% for curso in cursos %}
+            <option value="{{ curso.id }}" {% if curso.id==inscripcion.curso_id %}selected{% endif %}>
+                {{ curso.nombre }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="flex justify-center gap-3 mt-6">
+        <button type="submit"  class="text-white bg-success box-border border border-transparent 
+               hover:bg-success-strong focus:ring-4 focus:ring-success-medium 
+               shadow-xs font-medium leading-5 rounded-full text-sm 
+               px-4 py-2.5 focus:outline-none">
+                Actualizar
+        </button>
+
+        <a href="{{ url_for('inscripcion_bp.lista_inscripciones') }}"
+            class="text-white bg-brand box-border border border-transparent 
+                   hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium 
+                   shadow-xs font-medium leading-5 rounded-full text-sm 
+                   px-4 py-2.5 focus:outline-none">
+                        Cancelar
+        </a>
+    </div>
+
+</form>
+
+{% endblock %}

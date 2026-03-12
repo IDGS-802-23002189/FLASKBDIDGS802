@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="max-w-md mx-auto mt-6 bg-white p-6 rounded-xl shadow">
+
+    <h2 class="text-xl font-bold mb-6 text-center">
+        Inscribir alumno en {{ curso.nombre }}
+    </h2>
+
+    <form method="post" novalidate class="space-y-10">
+
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="mb-5">
+            <label class="block mb-2 text-sm font-medium">
+                Selecciona alumno
+            </label>
+
+            <select name="alumno_id"
+                    class="block w-full border rounded px-3 py-2" required>
+
+                {% for alumno in alumnos %}
+                <option value="{{ alumno.id }}">
+                    {{ alumno.nombre }} {{ alumno.apellidos }}
+                </option>
+                {% endfor %}
+
+            </select>
+        </div>
+
+        <div class="flex justify-center gap-3 mt-6">
+
+            <button type="submit"
+                class="text-white bg-success px-4 py-2 rounded-full">
+                Inscribir
+            </button>
+
+            <a href="{{ url_for('cursos_bp.detalles_curso', id=curso.id) }}"
+               class="text-white bg-danger box-border border border-transparent 
+                   hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium 
+                   shadow-xs font-medium leading-5 rounded-full text-sm 
+                   px-4 py-2.5 focus:outline-none">
+                    Cancelar
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}
